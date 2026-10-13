@@ -1,0 +1,885 @@
+/*
+{
+  "name": "Catppuccin Mocha Blue",
+  "author": "DavidHiFi",
+  "description": "Catppuccin Mocha with Blue accent, Mauve progress, FiraCode Nerd Font Mono SemiBold. Paste into Themer > OPEN EDITOR (CTRL+E)."
+}
+*/
+
+/* =====================================================================
+   Catppuccin Mocha Blue for TIDAL
+
+   Sections
+    1  Tokens             palette, host token mapping, glass tokens
+    2  Base               text colour and selection
+    3  Sidebar            navigation rail and rows
+    4  Top bars           header pseudo-element fills
+    5  Text and links
+    6  Footer player      bar, knob and artwork
+    7  Buttons            controls, tracklist row play, states, highlights
+    8  Search and forms
+    9  Cards and tables   shelves, rows, titles
+   10  Badges and pills
+   11  Menus and tooltips
+   12  Now playing
+   13  Scrollbars
+   14  Backgrounds        gradient removal, feed surfaces
+   15  Luna plugin UI
+   16  Sidebar lists
+   17  Typography
+   18  Miscellaneous
+   19  Progress bar
+   20  Footer controls    play button, favourites
+   21  Chrome surfaces    solid chrome, footer glass, main column, body glow
+   22  Fixes              applied last
+
+   Where two rules have the same specificity, the later rule wins.
+   Keep the sections in this order when you edit.
+   ===================================================================== */
+
+/* ---------------------------------------------------------------------
+   1. Tokens
+   --------------------------------------------------------------------- */
+
+/* Catppuccin Mocha palette: https://catppuccin.com/palette */
+:root {
+  --ctp-rosewater: #f5e0dc;
+  --ctp-flamingo: #f2cdcd;
+  --ctp-pink: #f5c2e7;
+  --ctp-mauve: #cba6f7;
+  --ctp-red: #f38ba8;
+  --ctp-maroon: #eba0ac;
+  --ctp-peach: #fab387;
+  --ctp-yellow: #f9e2af;
+  --ctp-green: #a6e3a1;
+  --ctp-teal: #94e2d5;
+  --ctp-sky: #89dceb;
+  --ctp-sapphire: #74c7ec;
+  --ctp-blue: #89b4fa;
+  --ctp-lavender: #b4befe;
+  --ctp-text: #cdd6f4;
+  --ctp-subtext1: #bac2de;
+  --ctp-subtext0: #a6adc8;
+  --ctp-overlay2: #9399b2;
+  --ctp-overlay1: #7f849c;
+  --ctp-overlay0: #6c7086;
+  --ctp-surface2: #585b70;
+  --ctp-surface1: #45475a;
+  --ctp-surface0: #313244;
+  --ctp-base: #1e1e2e;
+  --ctp-mantle: #181825;
+  --ctp-crust: #11111b;
+
+  /* TIDAL Wave and Market token mapping */
+  --wave-color-solid-base-fill: var(--ctp-base);
+  --wave-color-solid-base-bright: var(--ctp-surface0);
+  --wave-color-solid-base-brighter: var(--ctp-surface1);
+  --wave-color-solid-accent-fill: var(--ctp-blue);
+  --wave-color-solid-contrast-fill: var(--ctp-blue);
+  --wave-color-opacity-contrast-fill-high: rgba(137, 180, 250, 0.24);
+  --wave-color-opacity-contrast-fill-mid: rgba(137, 180, 250, 0.16);
+  --wave-color-text-main: var(--ctp-text);
+  --wave-color-text-secondary: var(--ctp-subtext1);
+  --wave-color-text-tertiary: var(--ctp-subtext0);
+
+  --market-core-surface-10-color: var(--ctp-mantle);
+  --market-core-surface-20-color: var(--ctp-surface0);
+  --market-core-surface-30-color: var(--ctp-surface1);
+  --market-core-fill-white-color: var(--ctp-text);
+  --market-core-text-white-color: var(--ctp-text);
+
+  /* Glass: used by the footer player only (section 21) */
+  --glass-mantle: rgba(24, 24, 37, 0.66);
+  --glass-blur: blur(16px) saturate(1.25);
+
+  /* Legacy names, kept in case TIDAL reads them. Nothing in this file uses them. */
+  --accent: var(--ctp-blue);
+  --bg-solid: var(--ctp-base);
+}
+
+/* Fallback values on every element, so a container's token overrides do
+   not pass down to its children. */
+* {
+  --wave-color-text-main: var(--ctp-text);
+  --market-core-fill-white-color: var(--ctp-text);
+  --wave-color-solid-base-fill: var(--ctp-base);
+  --wave-color-solid-base-bright: var(--ctp-surface0);
+  --wave-color-solid-accent-fill: var(--ctp-blue);
+  --wave-color-solid-contrast-fill: var(--ctp-blue);
+  --market-core-surface-10-color: var(--ctp-mantle);
+  --market-core-surface-20-color: var(--ctp-surface0);
+  --market-core-surface-30-color: var(--ctp-surface1);
+  scrollbar-color: var(--ctp-surface1) var(--ctp-base) !important;
+}
+
+/* ---------------------------------------------------------------------
+   2. Base
+   --------------------------------------------------------------------- */
+
+body,
+#wimp,
+main,
+#main,
+[class^="_mainContainer"],
+[class*="mainContent"] {
+  color: var(--ctp-text) !important;
+}
+
+::selection {
+  background: var(--ctp-blue) !important;
+  color: var(--ctp-crust) !important;
+}
+
+/* ---------------------------------------------------------------------
+   3. Sidebar
+   Background is set in section 21.
+   --------------------------------------------------------------------- */
+
+[class*="_sidebarWrapper_"],
+[aria-label="Navigation sidebar"],
+#sidebar {
+  border-right: 1px solid var(--ctp-surface0) !important;
+}
+
+[class*="_navLinkInnerLayout_"]:hover {
+  background-color: var(--ctp-surface0) !important;
+}
+
+[class*="_selected_"],
+[aria-current="page"],
+[class*="active"] {
+  color: var(--ctp-blue) !important;
+}
+
+/* ---------------------------------------------------------------------
+   4. Top bars
+   Background and border are set in section 21.
+   --------------------------------------------------------------------- */
+
+[class*="dataContainer"]::before,
+div[class^="_smallHeader_"]::before,
+[class*="Header"]::before {
+  background-color: var(--ctp-mantle) !important;
+  background-image: none !important;
+}
+
+/* ---------------------------------------------------------------------
+   5. Text and links
+   --------------------------------------------------------------------- */
+
+h1,
+h2,
+h3,
+[class*="heading"],
+[class*="headerContainer"] > h2 {
+  color: var(--ctp-text) !important;
+}
+
+[data-wave-color="textSecondary"],
+[data-wave-color="textTertiary"],
+[class*="Text"],
+p,
+span {
+  border-color: var(--ctp-surface1);
+}
+
+[data-wave-color="textSecondary"] {
+  color: var(--ctp-subtext1) !important;
+}
+
+[data-wave-color="textTertiary"] {
+  color: var(--ctp-subtext0) !important;
+}
+
+[data-test="artist-name"] {
+  color: var(--ctp-text) !important;
+}
+
+a {
+  color: var(--ctp-text) !important;
+}
+
+a:hover {
+  color: var(--ctp-blue) !important;
+}
+
+/* ---------------------------------------------------------------------
+   6. Footer player
+   Background and blur are set in section 21.
+   --------------------------------------------------------------------- */
+
+[data-test="footer-player"],
+#footerPlayer {
+  border-top: 1px solid var(--ctp-surface0) !important;
+  --wave-color-solid-base-fill: var(--ctp-mantle);
+  --wave-color-solid-base-bright: var(--ctp-mantle);
+  --wave-color-solid-base-brighter: var(--ctp-mantle);
+  --market-core-surface-10-color: var(--ctp-mantle);
+}
+
+[data-test="footer-player"]::before,
+#footerPlayer::before,
+[data-test="footer-player"]::after,
+#footerPlayer::after {
+  display: none !important;
+  content: none !important;
+}
+
+[data-test="footer-player"] [class*="backdrop"],
+[data-test="footer-player"] [class*="background"]:not([class*="imagery"]) {
+  background: transparent !important;
+  background-image: none !important;
+}
+
+[class*="_progress_"] > [data-test="current-time"] {
+  color: var(--ctp-blue) !important;
+}
+
+[class*="imageryContainer"] {
+  border-radius: 8px;
+  box-shadow: 0 0 0 1px var(--ctp-surface0) !important;
+}
+
+[class*="_knob_"],
+input[class*="_nativeRange"]::-webkit-slider-thumb {
+  background-color: var(--ctp-blue) !important;
+  box-shadow: none !important;
+}
+
+/* ---------------------------------------------------------------------
+   7. Buttons
+   --------------------------------------------------------------------- */
+
+button[aria-label="Play"],
+[data-test="play-button"],
+[class*="marketButton"],
+[class*="indicator"] {
+  background-color: var(--ctp-blue) !important;
+  color: var(--ctp-crust) !important;
+  border-color: transparent !important;
+}
+
+button[aria-label="Play"] *,
+[data-test="play-button"] * {
+  fill: var(--ctp-crust) !important;
+  color: var(--ctp-crust) !important;
+}
+
+button {
+  border-color: var(--ctp-surface1);
+}
+
+button:hover:not(:disabled) {
+  border-color: var(--ctp-surface2);
+}
+
+/* Tracklist row play: full-bleed, no clipped top or bottom edges */
+[class*="tableRow"] > *:first-child,
+[class*="trackRow"] > *:first-child,
+[role="table"] [role="row"] > *:first-child,
+[role="grid"] [role="row"] > *:first-child {
+  padding: 0 !important;
+}
+
+[class*="tableRow"] button[aria-label="Play"],
+[class*="trackRow"] button[aria-label="Play"],
+[role="row"] button[aria-label="Play"] {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  margin: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 32px !important;
+}
+
+[class*="tableRow"] button[aria-label="Play"] *,
+[class*="trackRow"] button[aria-label="Play"] *,
+[role="row"] button[aria-label="Play"] * {
+  fill: var(--ctp-crust) !important;
+  color: var(--ctp-crust) !important;
+}
+
+[data-test="follow-text-button"],
+button[data-test="close-now-playing"],
+button[data-test="request-fullscreen"] {
+  border: 1px solid var(--ctp-surface1) !important;
+}
+
+/* Toggled states: shuffle, repeat, likes */
+[aria-pressed="true"],
+[aria-checked="true"],
+button[aria-label="Shuffle"][aria-pressed="true"],
+button[aria-label="Repeat"][aria-pressed="true"] {
+  color: var(--ctp-blue) !important;
+}
+
+/* Playing and hovered rows keep Mocha text, not blue */
+[data-test-is-playing="true"] > *,
+[class*="tableRow"]:hover > * {
+  color: var(--ctp-text) !important;
+}
+
+button[aria-pressed="true"] svg,
+[data-test-is-playing="true"] svg {
+  fill: var(--ctp-blue) !important;
+  color: var(--ctp-blue) !important;
+}
+
+/* A plugin paints rows teal (rgb 126, 251, 238). Map it to Mocha blue. */
+[data-test-is-playing="true"],
+[class*="highlight"],
+tr[style*="126, 251, 238"],
+div[style*="126, 251, 238"] {
+  background-color: rgba(137, 180, 250, 0.14) !important;
+}
+
+/* ---------------------------------------------------------------------
+   8. Search and forms
+   Search background is set in section 21.
+   --------------------------------------------------------------------- */
+
+/* One bar: the wrapper owns the border and radius; the input is borderless */
+[data-type="search-field"] {
+  border: 1px solid var(--ctp-surface1) !important;
+  border-radius: 8px !important;
+  box-shadow: none !important;
+  overflow: hidden !important;
+}
+
+[data-type="search-field"]::before,
+[data-type="search-field"]::after {
+  display: none !important;
+  content: none !important;
+}
+
+[data-type="search-field"] input,
+[data-type="search-field"] input[type="text"],
+[data-type="search-field"] input[type="search"] {
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+input[type="text"],
+input[type="search"] {
+  color: var(--ctp-text) !important;
+}
+
+input::placeholder {
+  color: var(--ctp-overlay0) !important;
+}
+
+select {
+  background-color: var(--ctp-surface0) !important;
+  color: var(--ctp-text) !important;
+  border-color: var(--ctp-surface1) !important;
+}
+
+option {
+  background-color: var(--ctp-mantle) !important;
+  color: var(--ctp-text) !important;
+}
+
+/* ---------------------------------------------------------------------
+   9. Cards and tables
+   The default TIDAL grid is untouched. Only paint and rounding change.
+   --------------------------------------------------------------------- */
+
+[class*="_card_"] [class*="_imageContainer_"] {
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+[class*="cardContainer"],
+[class*="container"] {
+  background: transparent !important;
+}
+
+[class*="tableRow"]:hover {
+  background-color: rgba(49, 50, 68, 0.65) !important;
+}
+
+/* Titles truncate. The HiRes pill keeps its own space (tracklists only). */
+[class*="tracklist"] [class*="title"] > a,
+[class*="trackList"] [class*="title"] > a,
+[class*="tableRow"] [class*="title"] > a,
+[role="table"] [class*="title"] > a,
+[role="grid"] [class*="title"] > a {
+  min-width: 0 !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+}
+
+[class*="tracklist"] [title*="HiRes"],
+[class*="trackList"] [title*="HiRes"],
+[class*="tableRow"] [title*="HiRes"],
+[role="table"] [title*="HiRes"],
+[role="grid"] [title*="HiRes"],
+[class*="tracklist"] [class*="HiRes"],
+[class*="trackList"] [class*="HiRes"],
+[class*="tableRow"] [class*="HiRes"] {
+  flex-shrink: 0 !important;
+  white-space: nowrap !important;
+}
+
+/* ---------------------------------------------------------------------
+   10. Badges and pills
+   --------------------------------------------------------------------- */
+
+[data-test="feed-counter"],
+[class*="explicitBadge"],
+[class^="_explicitBadge"] {
+  background-color: var(--ctp-blue) !important;
+  color: var(--ctp-crust) !important;
+}
+
+#spotlighted-badge * {
+  fill: var(--ctp-blue) !important;
+}
+
+[class="format-info"] {
+  background: var(--ctp-surface0) !important;
+  color: var(--ctp-subtext1) !important;
+  border: 1px solid var(--ctp-surface1) !important;
+}
+
+/* Footer quality pill: width fits the content, fade mask removed */
+[data-test="footer-player"] [class="format-info"],
+[data-test="footer-player"] [class*="quality"],
+[data-test="footer-player"] [class*="Quality"],
+[data-test="footer-player"] [class*="format"],
+[data-test="footer-player"] [class*="Format"],
+[data-test="footer-player"] [class*="badge"],
+[data-test="footer-player"] [class*="tag"],
+[data-test="footer-player"] [class*="pill"] {
+  width: auto !important;
+  max-width: min(300px, 28vw) !important;
+  min-width: 0 !important;
+  font-size: 11px !important;
+  line-height: 1.4 !important;
+  letter-spacing: 0.02em !important;
+  padding: 4px 10px !important;
+  border-radius: 999px !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  flex-shrink: 0 !important;
+  mask-image: none !important;
+  -webkit-mask-image: none !important;
+}
+
+[data-test="footer-player"] [class*="pill"]::before,
+[data-test="footer-player"] [class*="pill"]::after,
+[data-test="footer-player"] [class*="badge"]::before,
+[data-test="footer-player"] [class*="badge"]::after,
+[data-test="footer-player"] [class*="tag"]::before,
+[data-test="footer-player"] [class*="tag"]::after {
+  display: none !important;
+  content: none !important;
+}
+
+/* ---------------------------------------------------------------------
+   11. Menus and tooltips
+   Background and blur are set in section 21.
+   --------------------------------------------------------------------- */
+
+[class*="_contextMenu_"],
+[class*="contextMenu"][role="menu"],
+[class*="_subMenu_"],
+[role="menu"][class*="_submenu"],
+.modal,
+.dialog,
+.popover,
+.tooltip,
+[class*="_marketTooltipContainer_"],
+[class*="_tooltipText_"] {
+  border: 1px solid var(--ctp-surface0) !important;
+  color: var(--ctp-text) !important;
+  box-shadow: 0 12px 32px rgba(17, 17, 27, 0.55) !important;
+}
+
+/* ---------------------------------------------------------------------
+   12. Now playing
+   --------------------------------------------------------------------- */
+
+[class*="_nowPlayingContainer_"],
+[data-test="now-playing"],
+#nowPlaying {
+  background-color: var(--ctp-base) !important;
+}
+
+figure[data-test="now-playing-image"] {
+  box-shadow: 0 0 0 1px var(--ctp-surface0), 0 24px 64px rgba(17, 17, 27, 0.6) !important;
+}
+
+/* ---------------------------------------------------------------------
+   13. Scrollbars
+   --------------------------------------------------------------------- */
+
+.enable-scrollbar-styles ::-webkit-scrollbar,
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+.enable-scrollbar-styles ::-webkit-scrollbar-thumb,
+::-webkit-scrollbar-thumb {
+  background: var(--ctp-surface1) !important;
+  border-radius: 8px;
+  border: 2px solid var(--ctp-base) !important;
+}
+
+.enable-scrollbar-styles ::-webkit-scrollbar-track,
+::-webkit-scrollbar-track,
+.enable-scrollbar-styles ::-webkit-scrollbar-corner {
+  background: var(--ctp-base) !important;
+}
+
+/* ---------------------------------------------------------------------
+   14. Backgrounds
+   --------------------------------------------------------------------- */
+
+/* Hide the blur layers and the bottom gradient */
+[class*="_bottomGradient_"],
+[class*="backgroundBlur"],
+[class*="blurBackground"] {
+  display: none !important;
+}
+
+/* Remove the pink and blue wash TIDAL paints on page pseudo-elements */
+body::before,
+body::after,
+#main::before,
+#main::after,
+main::before,
+main::after {
+  background-image: none !important;
+  background: transparent !important;
+}
+
+/* Feed and page surfaces sit on the base colour */
+[class*="feed"],
+[class*="page"],
+[class*="contentWrapper"],
+[data-test="home-page-feed"],
+[data-test*="search-results"] > [class*="container"] {
+  background-color: var(--ctp-base) !important;
+  background-image: none !important;
+}
+
+/* No gradient images on anything except artwork */
+[class*="background"]:not(img):not(figure):not([class*="imagery"]),
+[class*="backdrop"]:not(img),
+[class*="gradient"]:not(img),
+[class*="Gradient"]:not(img),
+[class*="backgroundBlur"],
+[class*="blurBackground"],
+[class*="_bottomGradient_"] {
+  background-image: none !important;
+}
+
+/* ---------------------------------------------------------------------
+   15. Luna plugin UI
+   --------------------------------------------------------------------- */
+
+/* Settings and plugin panels use the Mocha mantle */
+[class*="settings"] *,
+[class*="plugin"] * {
+  --wave-color-solid-base-fill: var(--ctp-mantle);
+}
+
+div[class*="card"],
+div[class*="Card"],
+section[class*="card"],
+[class*="pluginCard"] {
+  background-color: var(--ctp-mantle) !important;
+  background-image: none !important;
+  border: 1px solid var(--ctp-surface0) !important;
+}
+
+/* ---------------------------------------------------------------------
+   16. Sidebar lists
+   --------------------------------------------------------------------- */
+
+[class*="expandableSectionTitle"],
+[class*="sectionTitle"],
+[class*="sidebarSection"],
+[class*="collectionHeader"],
+[aria-label="Playlists"],
+[aria-label="Navigation sidebar"] [class*="header"] {
+  background-color: var(--ctp-mantle) !important;
+  background-image: none !important;
+  color: var(--ctp-subtext0) !important;
+}
+
+/* List rows: transparent, with a blue edge when selected */
+[class*="_contentItem_"] {
+  background-color: transparent !important;
+  border-left: 2px solid transparent !important;
+}
+
+[class*="_contentItem_"]:hover {
+  background-color: var(--ctp-surface0) !important;
+}
+
+[class*="_contentItem_"][class*="_selected_"],
+[class*="_contentItem_"][aria-selected="true"],
+[class*="_contentItem_"][aria-current="true"] {
+  background-color: var(--ctp-surface0) !important;
+  border-left-color: var(--ctp-blue) !important;
+  color: var(--ctp-text) !important;
+}
+
+/* ---------------------------------------------------------------------
+   17. Typography
+   --------------------------------------------------------------------- */
+
+/* FiraCode Nerd Font Mono SemiBold, loaded from the local install */
+@font-face {
+  font-family: "FiraCode Nerd Font Mono SemiBold";
+  src: local("FiraCode Nerd Font Mono SemiBold"),
+    local("FiraCodeNerdFontMono-SemiBold"),
+    local("FiraCode Nerd Font Mono"),
+    local("FiraCode Nerd Font");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+* {
+  font-family: "FiraCode Nerd Font Mono SemiBold", "FiraCode Nerd Font Mono", "FiraCode Nerd Font", monospace !important;
+  text-decoration-color: var(--ctp-blue) !important;
+}
+
+/* ---------------------------------------------------------------------
+   18. Miscellaneous
+   --------------------------------------------------------------------- */
+
+[class*="divider"] {
+  background-color: var(--ctp-surface0) !important;
+  display: block !important;
+}
+
+:focus-visible {
+  outline: 2px solid var(--ctp-blue) !important;
+  outline-offset: 2px;
+}
+
+/* ---------------------------------------------------------------------
+   19. Progress bar
+   The stock bar keeps its size and shape. Its fill has no stylesheet
+   selector, so one hue-rotate filter moves it from gold to Mauve. Greys
+   pass through unchanged.
+   --------------------------------------------------------------------- */
+
+[data-test="footer-player"] [data-test="progress-indicator"],
+[aria-label="Progress bar"] [data-test="progress-indicator"] {
+  filter: hue-rotate(227deg) saturate(1) brightness(1.1) !important;
+}
+
+/* The filter would turn blue text green, so times and thumbs stay grey */
+[data-test="footer-player"] [class*="_progress_"] > [data-test="current-time"],
+[aria-label="Progress bar"] [data-test="current-time"],
+[aria-label="Progress bar"] [data-test="duration"] {
+  color: var(--ctp-subtext1) !important;
+}
+
+[data-test="footer-player"] input[type="range"],
+[data-test="footer-player"] input[class*="_nativeRange"] {
+  accent-color: var(--ctp-subtext1) !important;
+}
+
+[data-test="footer-player"] input[type="range"]::-webkit-slider-thumb,
+[data-test="footer-player"] input[class*="_nativeRange"]::-webkit-slider-thumb,
+[data-test="footer-player"] [class*="_knob_"] {
+  background-color: var(--ctp-subtext1) !important;
+}
+
+/* ---------------------------------------------------------------------
+   20. Footer controls
+   --------------------------------------------------------------------- */
+
+/* Footer play and pause: slightly rounded */
+[data-test="footer-player"] button[aria-label="Play"],
+[data-test="footer-player"] button[aria-label="Pause"],
+[data-test="footer-player"] [data-test="play-button"],
+#footerPlayer button[aria-label="Play"],
+#footerPlayer button[aria-label="Pause"] {
+  border-radius: 8px !important;
+}
+
+/* Favourite controls: pulled to the front of their flex row, 10px gap after */
+[data-test="footer-player"] button[data-test*="favorite"],
+[data-test="footer-player"] button[data-test*="heart"],
+[data-test="footer-player"] button[aria-label*="favorite" i],
+[data-test="footer-player"] button[aria-label*="like" i],
+[data-test="footer-player"] [role="button"][data-test*="favorite"],
+[data-test="footer-player"] [role="button"][aria-label*="favorite" i],
+#footerPlayer button[data-test*="favorite"],
+#footerPlayer button[data-test*="heart"],
+#footerPlayer button[aria-label*="favorite" i],
+#footerPlayer button[aria-label*="like" i],
+#footerPlayer [role="button"][data-test*="favorite"],
+#footerPlayer [role="button"][aria-label*="favorite" i] {
+  order: -1 !important;
+  float: left !important;
+  margin-left: 0 !important;
+  margin-right: 10px !important;
+  flex-shrink: 0 !important;
+}
+
+/* The wrapper of the favourite control takes order 2, so the actions
+   cluster (heart and menu) sits after the title stack. */
+[data-test="footer-player"] div:has(> button[data-test*="favorite"]),
+[data-test="footer-player"] div:has(> button[data-test*="heart"]),
+[data-test="footer-player"] div:has(> button[aria-label*="favorite" i]),
+[data-test="footer-player"] div:has(> button[aria-label*="like" i]),
+[data-test="footer-player"] div:has(> [aria-label*="favorite" i]),
+#footerPlayer div:has(> button[data-test*="favorite"]),
+#footerPlayer div:has(> button[data-test*="heart"]),
+#footerPlayer div:has(> button[aria-label*="favorite" i]),
+#footerPlayer div:has(> button[aria-label*="like" i]),
+#footerPlayer div:has(> [aria-label*="favorite" i]) {
+  order: 2 !important;
+  float: left !important;
+  margin-left: 0 !important;
+  margin-right: 10px !important;
+  flex-shrink: 0 !important;
+}
+
+/* ---------------------------------------------------------------------
+   21. Chrome surfaces
+   Solid Mocha for the sidebar, bars, search and menus. The footer player
+   is the only frosted glass. The main column is translucent over the body
+   glow, which is three soft tints fixed behind the app.
+   --------------------------------------------------------------------- */
+
+[class*="_sidebarWrapper_"],
+[aria-label="Navigation sidebar"],
+#sidebar,
+aside,
+[role="navigation"],
+[role="complementary"] {
+  background-color: var(--ctp-mantle) !important;
+  background-image: none !important;
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+}
+
+[class*="_bar_"],
+[class*="_smallHeader_"],
+#mainHeader,
+[class*="stickyHeader"],
+[class*="_sectionHeader"],
+header,
+[role="banner"] {
+  background-color: var(--ctp-mantle) !important;
+  background-image: none !important;
+  border-bottom: 1px solid var(--ctp-surface0) !important;
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+}
+
+[data-type="search-field"],
+input[type="search"] {
+  background: var(--ctp-surface0) !important;
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+}
+
+[class*="_contextMenu_"],
+[class*="contextMenu"][role="menu"],
+[class*="_subMenu_"],
+[role="menu"][class*="_submenu"],
+.modal,
+.dialog,
+.popover,
+.tooltip,
+[class*="_marketTooltipContainer_"],
+[class*="_tooltipText_"] {
+  background-color: var(--ctp-mantle) !important;
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+}
+
+[data-test="footer-player"],
+#footerPlayer {
+  background: var(--glass-mantle) !important;
+  background-image: none !important;
+  -webkit-backdrop-filter: var(--glass-blur) !important;
+  backdrop-filter: var(--glass-blur) !important;
+}
+
+#wimp {
+  background-color: var(--ctp-base) !important;
+  background-image: none !important;
+}
+
+#main,
+main,
+[class^="_mainContainer"],
+[class*="mainContent"] {
+  background-color: rgba(30, 30, 46, 0.88) !important;
+  background-image: none !important;
+  -webkit-backdrop-filter: blur(24px) saturate(1.2) !important;
+  backdrop-filter: blur(24px) saturate(1.2) !important;
+}
+
+body {
+  background-color: var(--ctp-base) !important;
+  background-image:
+    radial-gradient(ellipse 55% 45% at 6% 0%, rgba(137, 180, 250, 0.1), transparent 70%),
+    radial-gradient(ellipse 50% 40% at 100% 100%, rgba(203, 166, 247, 0.08), transparent 70%),
+    radial-gradient(ellipse 40% 35% at 100% 0%, rgba(148, 226, 213, 0.05), transparent 70%) !important;
+  background-attachment: fixed !important;
+}
+
+/* ---------------------------------------------------------------------
+   22. Fixes
+   Applied last so they win the ties above.
+   --------------------------------------------------------------------- */
+
+/* Card hover play: a blue circle with no square corners behind it */
+[class*="_imageContainer_"] button[aria-label="Play"],
+[class*="_overlay_"] button[aria-label="Play"] {
+  background-color: var(--ctp-blue) !important;
+  border-radius: 50% !important;
+  overflow: hidden !important;
+}
+
+[class*="_imageContainer_"] button[aria-label="Play"] div,
+[class*="_overlay_"] button[aria-label="Play"] div {
+  background-color: transparent !important;
+}
+
+/* Essentials cards round to the artwork radius. The shelf row wrapper
+   stays transparent so no square edge shows around the cards. */
+main div[class*="_card_"] {
+  border-radius: 10px !important;
+  overflow: hidden !important;
+}
+
+main div[class*="_cardContainer_"] {
+  background-color: transparent !important;
+  border: none !important;
+}
+
+/* Tracklist headers sit over their columns. Data rows grow their context
+   cell to 135px, so the header cell matches that width. */
+[class*="_tableHeader_"] [class*="_contextColumn_"] {
+  flex: 0 0 135px !important;
+}
+
+[class*="_tableHeader_"] [class*="_bpmColumn_"] {
+  padding-right: 16px !important;
+}
+
+/* Tracks page: no opaque box behind the page title, so the base shows */
+[class*="_pageTitleContainer_"] {
+  background: transparent !important;
+}
