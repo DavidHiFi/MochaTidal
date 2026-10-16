@@ -36,6 +36,22 @@ The main column is translucent and blurs the soft blue and lavender glow behind 
 
 ![Album page with the tracklist columns aligned under their headers](screenshots/album.png)
 
+## Contributing
+
+Bug reports, feature ideas and pull requests are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md) for setup, checks and what to include.
+
+## Star history
+
+⭐ Thanks for the stars, screenshots and theme fixes.
+
+<a href="https://www.star-history.com/?repos=DavidHiFi%2FMochaTidal&amp;type=date">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=DavidHiFi/MochaTidal&amp;type=date&amp;theme=dark&amp;legend=top-left" />
+    <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=DavidHiFi/MochaTidal&amp;type=date" />
+    <img alt="DavidHiFi/MochaTidal GitHub star history" src="https://api.star-history.com/chart?repos=DavidHiFi/MochaTidal&amp;type=date" />
+  </picture>
+</a>
+
 ## Credits
 
 - The Catppuccin Mocha palette comes from [Catppuccin](https://github.com/catppuccin/catppuccin), MIT licensed.
