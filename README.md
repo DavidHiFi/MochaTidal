@@ -42,14 +42,6 @@ Requires [TidaLuna](https://github.com/Inrixia/TidaLuna) and its Themer plugin.
 > [!NOTE]
 > **Tested on TIDAL 2.43.2 with TidaLuna 1.17.1-beta.** TIDAL updates can rename the classes the theme targets. If part of the app looks wrong after an update, [open an issue](https://github.com/DavidHiFi/MochaTidal/issues/new) with a screenshot.
 
----
-
-## Support development
-
-This theme is free and always will be. If it makes your app better, a coffee keeps it going.
-
-[![Support DavidHiFi on Ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/davidhifi)
-
 ## Contributing
 
 Bug reports with TIDAL version and theme file, feature ideas and pull requests welcome. See [CONTRIBUTING.md](CONTRIBUTING.md).
