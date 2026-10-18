@@ -23,26 +23,24 @@ Solid Mocha surfaces, frosted footer player, Blue buttons and progress fill, rou
 
 ## Installation
 
-Requires [TidaLuna](https://tidaluna.org) and its Themer plugin.
+Requires [TidaLuna](https://github.com/Inrixia/TidaLuna) and its Themer plugin.
 
 1. Install TidaLuna and enable the Themer plugin.
 2. Open Themer settings (Ctrl+E) and paste the contents of `MochaTidal.css` into the editor, then apply.
 
-## What it changes
+## Features
 
-- Solid Mocha surfaces for sidebar, top bars, menus and search.
-- Frosted footer player.
-- Blue for buttons, active sidebar item and card play badge; Mauve progress fill.
-- Rounded artwork on cards; clean blue circle play badge.
-- FiraCode Nerd Font Mono SemiBold for all text.
+- **Mocha surfaces:** solid Catppuccin Mocha on the sidebar, top bars, menus and search.
+- **Frosted player:** the footer player blurs what scrolls behind it.
+- **Blue accents:** buttons, the active sidebar item and the play badge on cards.
+- **Mauve progress bar:** the track progress fill.
+- **Rounded artwork:** album and playlist covers get rounded corners.
+- **Font:** FiraCode Nerd Font Mono SemiBold everywhere, falling back to your system monospace font if it is not installed.
 
-## Requirements
-
-- TIDAL desktop 2.43.2 and TidaLuna 1.17.1-beta (tested versions).
-- FiraCode Nerd Font Mono installed locally (falls back to system monospace otherwise).
+## Notes
 
 > [!NOTE]
-> Selectors match TIDAL's class names. App updates can rename classes; start with the matching section when fixing a broken part.
+> **Tested on TIDAL 2.43.2 with TidaLuna 1.17.1-beta.** TIDAL updates can rename the classes the theme targets. If part of the app looks wrong after an update, [open an issue](https://github.com/DavidHiFi/MochaTidal/issues/new) with a screenshot.
 
 ---
 
@@ -75,16 +73,22 @@ Thanks for the stars and theme fixes.
 ## Credits
 
 - **Author:** Myself, [DavidHiFi](https://github.com/DavidHiFi)
-- **Palette:** [Catppuccin](https://github.com/catppuccin/catppuccin), MIT licensed.
-- **Themer plugin:** [TidaLuna](https://tidaluna.org), loads and applies the CSS.
 
-Built with CSS and the TidaLuna Themer plugin.
+| Who | What |
+|---|---|
+| **Catppuccin** ([catppuccin](https://github.com/catppuccin/catppuccin), MIT) | The Mocha colour palette. |
+| **Inrixia** ([TidaLuna](https://github.com/Inrixia/TidaLuna)) | The TIDAL client mod and its Themer plugin, which load the CSS. |
+| **Nerd Fonts** ([FiraCode Nerd Font](https://github.com/ryanoasis/nerd-fonts)) | The font the theme uses. |
+
+Built with plain CSS for [TIDAL](https://tidal.com) through [TidaLuna](https://github.com/Inrixia/TidaLuna)'s Themer plugin.
 
 > Missing or wrong credit? [Open an issue](https://github.com/DavidHiFi/MochaTidal/issues/new) and I'll fix it.
 
 ## Disclaimers
 
-Most of this theme was developed with AI coding agents. The Catppuccin palette and TidaLuna plugin are by their original authors.
+Most of this theme was developed with AI coding agents, including Claude Code, Codex and OpenCode. No single AI agent made the project.
+
+Client mods like TidaLuna are not supported by TIDAL. Use them at your own risk.
 
 <div align="center">
 <br>
