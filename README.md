@@ -66,6 +66,15 @@ Thanks for the stars and theme fixes.
 
 - **Author:** Myself, [DavidHiFi](https://github.com/DavidHiFi)
 
+<!-- contributors:start -->
+- **AI coding agents:** [Claude Code](https://github.com/anthropics/claude-code), [Codex](https://github.com/openai/codex), [OpenCode](https://github.com/anomalyco/opencode) and Halo Sparks
+
+<p>
+  <a href="https://github.com/DavidHiFi"><img src="https://github.com/DavidHiFi.png?size=96" width="48" height="48" alt="DavidHiFi" title="DavidHiFi"></a>
+  <a href="https://github.com/anthropics/claude-code"><img src="https://github.com/claude.png?size=96" width="48" height="48" alt="Claude Code" title="Claude Code"></a>
+</p>
+<!-- contributors:end -->
+
 | Who | What |
 |---|---|
 | **Catppuccin** ([catppuccin](https://github.com/catppuccin/catppuccin), MIT) | The Mocha colour palette. |
