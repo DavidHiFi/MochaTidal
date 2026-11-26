@@ -11,6 +11,9 @@ Solid Mocha surfaces, frosted footer player, Blue buttons and progress fill, rou
 <a href="#installation">
 <img src="https://img.shields.io/badge/%F0%9F%93%96%20INSTALL%20GUIDE-2EA043?style=for-the-badge&labelColor=161B22" alt="Read the install guide" height="42">
 </a>
+<a href="https://discord.gg/PETWgTfS9x">
+<img src="https://img.shields.io/badge/JOIN%20THE%20DISCORD-5865F2?style=for-the-badge&logo=discord&logoColor=white&labelColor=161B22" alt="Join the Discord server" height="42">
+</a>
 
 <br><br>
 
